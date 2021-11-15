@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package authPackage;
+
+service Auth {
+    rpc signUp(signUpData) returns (signUpData);
+    rpc getAllUsers(empty) returns (authUser); 
+    rpc signIn(loginData) returns (loginData);
+}
+
+message empty {}
+
+message loginData{
+    string email = 1;
+    string password = 2;
+}
+
+message signUpData{
+    string firstName = 1;
+    string lastName = 2;
+    string email = 3;
+    string password = 4;
+
+}
+
+message authUserData {
+    string _id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string password = 5;
+    
+}
+
+message authUser{
+    repeated authUserData data = 1;
+}
+
